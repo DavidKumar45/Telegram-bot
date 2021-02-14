@@ -13,6 +13,9 @@ START_MSG = """
 Hi, I am **ANONYMOUS SENDER BOT.**\n
 Just Forward me Some messages or
 media and I will **Anonymize** that !!
+
+You Can too Clone me :-
+https://github.com/ProThinkerGang/Anonymous-Bot
 """
 
 if var.START_MESSAGE is not None:
