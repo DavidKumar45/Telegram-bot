@@ -2,14 +2,14 @@ from pyrogram import (
     Client,
     filters
     )
-
-MESSAGE = """
-Hey, You want to use me In Group ?\nTell this thing
-in @FutureCodes !!\nCurrently Leaving 👋
-"""
+from database.userchats import add_chat
+from database.blacklist import check_blacklist
 
 
 @Client.on_message(filters.group)
-async def leave(client, message):
-    await message.reply_text(MESSAGE)
-    await message.chat.leave()
+async def copymes(client, message):
+    fromuser = str(message.from_user.id)
+    if check_blacklist(fromuser):
+      return
+    add_chat(fromuser)
+    await message.copy(message.chat.id,caption="")

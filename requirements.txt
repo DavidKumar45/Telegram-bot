@@ -1,3 +1,4 @@
 tgcrypto
 pyrogram
 python-dotenv
+redis
