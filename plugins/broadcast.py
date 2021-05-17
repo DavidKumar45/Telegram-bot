@@ -24,7 +24,7 @@ async def bcast(client, message):
     )
 
 
-@Client.on_message(filters.command("stats") & filters.user(var.OWNER_ID))
+@Client.on_message(filters.command("stats") & filters.user(int(var.OWNER_ID)))
 async def gistat(_, message):
     al = get_all_chats()
     await message.reply_text(f"Total Chats in Database - {len(al)}", quote=True)
