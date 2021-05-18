@@ -1,3 +1,4 @@
+import ast
 import redis
 
 from vars import var
@@ -11,3 +12,11 @@ DB = redis.StrictRedis(
     charset="utf-8",
     decode_responses=True,
 )
+
+def get_stuff(WHAT):
+    n = []
+    cha = DB.get(WHAT)
+    if not cha:
+        cha = "{}"
+    n.append(ast.literal_eval(cha))
+    return n[0]

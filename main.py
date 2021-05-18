@@ -1,6 +1,6 @@
 import logging
 
-from pyrogram import Client
+from pyrogram import Client, idle
 
 from vars import var
 
@@ -14,4 +14,8 @@ AnonyBot = Client(
     plugins=dict(root="plugins"),
 )
 
-AnonyBot.run()
+AnonyBot.start()
+uname = (AnonyBot.get_me()).username
+print(f"@{uname} Deployed Successfully !")
+
+idle()

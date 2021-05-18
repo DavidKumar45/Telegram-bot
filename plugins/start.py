@@ -30,7 +30,7 @@ REPLY_MARKUP = InlineKeyboardMarkup(
 
 @Client.on_message(filters.command("start"))
 async def start(client, message):
-    fuser = str(message.from_user.id)
+    fuser = message.from_user.id
     if check_blacklist(fuser):
         return
     add_chat(fuser)
@@ -39,7 +39,7 @@ async def start(client, message):
         geto = await client.get_users(var.OWNER_ID)
         NewVar += f"\n\nMaintained By {geto.mention}"
     else:
-        NewVar += "\n\n**Onwer Commands** - https://telegra.ph/Owner-Commands-05-13"
+        NewVar += "\n**Onwer Commands** - https://telegra.ph/Owner-Commands-05-13"
     await message.reply_text(
         NewVar, reply_markup=REPLY_MARKUP, disable_web_page_preview=True
     )

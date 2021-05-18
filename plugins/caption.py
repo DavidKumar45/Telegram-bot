@@ -8,7 +8,7 @@ from database.userchats import add_chat
 
 @Client.on_message(filters.caption & filters.private)
 async def addorno(client, message):
-    fuser = str(message.from_user.id)
+    fuser = message.from_user.id
     if check_blacklist(fuser):
         return
     msg = message.message_id
@@ -31,9 +31,9 @@ async def addorno(client, message):
     )
 
 
-@Client.on_message(filters.reply & filters.text)
+@Client.on_message(filters.reply & filters.text & ~filters.edited)
 async def makenew(_, message):
-    fuser = str(message.from_user.id)
+    fuser = message.from_user.id
     if check_blacklist(fuser):
         return
     add_chat(fuser)

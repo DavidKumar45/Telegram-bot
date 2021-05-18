@@ -1,32 +1,38 @@
-from . import DB
+from . import DB, get_stuff
 
 
 def add_chat(id: str):
-    CCH = DB.get("ALLCHATS")
+    CCH = get_stuff("ALLCHATS")
     if not CCH:
-        DB.set("ALLCHATS", str(id))
+        CCH.update({"USERS":[id]})
+        DB.set("ALLCHATS", str(CCH))
         return
-    for chat in CCH.split(" "):
-        if id == chat:
-            return
-    ALL = CCH + " " + id
-    DB.set("ALLCHATS", ALL)
+    if CCH["USERS"] and id in CCH["USERS"]:
+      return
+    Ul = CCH["USERS"]
+    if not Ul:
+      Ul = []
+    Ul.append(id)
+    CCH.update({"USERS":Ul})
+    DB.set("ALLCHATS", str(CCH))
 
 
 def get_all_chats():
-    CCH = DB.get("ALLCHATS")
-    if not CCH:
+    CCH = get_stuff("ALLCHATS")
+    if not (CCH and CCH["USERS"]):
         return []
-    return CCH.split(" ")
+    return CCH["USERS"]
 
 
 def remove_chat(id):
-    CCH = DB.get("ALLCHATS")
+    CCH = get_stuff("ALLCHATS")
     if not CCH:
         return
-    WA = ""
-    for CHA in CCH.split(" "):
-        if CHA != id:
-            WA += f" {CHA}"
-    DB.set("ALLCHATS", WA)
+    if CCH["USERS"] and id not in CCH["USERS"]:
+      return
+    li = CCH["USERS"]
+    if id in li:
+      li.remove(id)
+    CCH.update({"USERS":li})
+    DB.set("ALLCHATS", str(CCH))
     return True
