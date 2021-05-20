@@ -1,2 +1,3 @@
-motor
-dnspython
+redis
+pyrogram
+tgcrypto
