@@ -4,7 +4,7 @@ from pyrogram import Client, idle
 
 from vars import var
 
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
+logging.getLogger("pyrogram").setLevel(logging.INFO)
 
 AnonyBot = Client(
     "Anonymous-Sender",

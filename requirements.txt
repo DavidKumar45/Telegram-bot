@@ -1,2 +1,4 @@
-motor
-dnspython
+pyrogram
+python-dotenv
+redis
+tgcrypto
