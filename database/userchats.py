@@ -1,5 +1,8 @@
 from . import DB, get_stuff
 
+AL = DB.get("ALLCHATS")
+if not AL:
+    DB.set("ALLCHATS", "{'USERS':[]}")
 
 def add_chat(id: str):
     CCH = get_stuff("ALLCHATS")
