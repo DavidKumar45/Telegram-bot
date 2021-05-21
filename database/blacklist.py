@@ -1,5 +1,9 @@
 from . import DB, get_stuff
 
+AL = DB.get("BLACKLIST")
+if not AL:
+    DB.set("BLACKLIST", "{'USERS':[]}")
+
 
 def add_blacklist(id):
     mn = get_stuff("BLACKLIST")
@@ -19,10 +23,13 @@ def add_blacklist(id):
 
 def check_blacklist(id):
     std = get_stuff("BLACKLIST")
-    if std["USERS"] and id in std["USERS"]:
+    try:
+        MNT = std["USERS"]
+    except:
+        return False
+    if MNT and id in MNT:
       return True
-    else:
-      return False
+    return False
 
 
 def remove_blacklist(id):

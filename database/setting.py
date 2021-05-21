@@ -1,5 +1,13 @@
 from . import DB, get_stuff
 
+AL = DB.get("YESCAPTION")
+if not AL:
+    DB.set("YESCAPTION", "{'USERS':[]}")
+
+ML = DB.get("NOCAPTION")
+if not ML:
+    DB.set("NOCAPTION", "{'USERS':[]}")
+
 
 def caption_True(id):
     CA = get_stuff("YESCAPTION")
