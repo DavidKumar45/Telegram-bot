@@ -13,6 +13,17 @@
 * [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/prothinkergang/anonymous-bot)
 <br><br>
 
+<details>
+<summary> How to get REDIS_URI and REDIS_PASS ? </summary>
+<br>
+
+- Create a Account on [RedisLabs.com](https://RedisLabs.com)
+- Create one REDIS Subscription
+- You will get REDIS Endpoint, which will be REDIS_PASS and password which will be REDIS_PASS
+
+
+</details>
+
 ## Features for Owner
 - `Blacklist`
 - `Broadcast`
